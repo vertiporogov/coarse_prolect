@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "cours-project-bank"
+version = "0.1.0"
+description = ""
+authors = ["vertiporogov <133884681+vertiporogov@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "cours_project_bank"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
