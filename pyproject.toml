@@ -9,6 +9,10 @@ packages = [{include = "cours_project_bank"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+
 
 [build-system]
 requires = ["poetry-core"]
