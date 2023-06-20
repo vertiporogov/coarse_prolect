@@ -3,9 +3,9 @@ import datetime
 
 def load_json_file(file_name):
     '''
-
-    :param file_name:
-    :return:
+    Функция для чтения json файла
+    :param file_name:file_name
+    :return:operations_file_list
     '''
     with open(file_name, "r", encoding="utf-8") as file:
         operations_file_list = load(file)
@@ -14,9 +14,9 @@ def load_json_file(file_name):
 
 def five_last_operations(operations_list):
     '''
-
-    :param operations_list:
-    :return:
+    Функция сортирует список по дате и выдает пять последних операций
+    :param operations_list:operations_list
+    :return:sorted(five_operation_list, key=lambda d: d['date'], reverse=True)
     '''
     five_operation_list = []
     for i in operations_list:
@@ -27,16 +27,24 @@ def five_last_operations(operations_list):
     return sorted(five_operation_list, key=lambda d: d['date'], reverse=True)
 
 
+def date_processing(date):
+    '''
+    Функция меняет дату в удобный формат
+    :param date:date
+    :return:new_date.date().strftime('%d.%m.%Y')
+    '''
+    new_date = datetime.datetime.strptime(' '.join(date.split('T')), '%Y-%m-%d %H:%M:%S.%f')
+    return new_date.date().strftime('%d.%m.%Y')
 
 def output_information(operations_list):
     '''
-
-    :param operations_list:
-    :return:
+    Функция изменяет каждую операцию в нужный нам вид.
+    :param operations_list:operations_list
+    :return:information_str
     '''
     information_str = ''
     for i in operations_list:
-        data = i['date']
+        data = date_processing(i['date'])
         description = i['description']
 
         account = i['from'].split()[-1]
